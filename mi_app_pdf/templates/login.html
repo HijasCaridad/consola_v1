@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Login - Procesador PDFs</title>
+  <style>
+    body { font-family: Arial; background: #f8f9fa; display: flex; justify-content: center; align-items: center; height: 100vh; }
+    form { background: white; padding: 40px; border-radius: 10px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+    input { width: 100%; padding: 10px; margin-top: 10px; }
+    button { background-color: #007bff; color: white; border: none; padding: 10px; margin-top: 15px; width: 100%; cursor: pointer; }
+  </style>
+</head>
+<body>
+  <form method="POST">
+    <h2>🔐 Acceso restringido</h2>
+    <input type="password" name="password" placeholder="Introduce la clave de acceso" required>
+    <button type="submit">Entrar</button>
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+        <ul>
+          {% for category, message in messages %}
+            <li style="color:red">{{ message }}</li>
+          {% endfor %}
+        </ul>
+      {% endif %}
+    {% endwith %}
+  </form>
+</body>
+</html>

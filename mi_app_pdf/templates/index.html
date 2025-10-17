@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Procesador de PDFs</title>
+  <style>
+    body { font-family: Arial; margin: 40px; }
+    h2 { color: #333; }
+    input, button { margin-top: 10px; padding: 10px; width: 100%; }
+    .msg { color: red; }
+  </style>
+</head>
+<body>
+  <h2>📄 Procesador de PDFs</h2>
+
+  <form method="POST" enctype="multipart/form-data">
+    <label>👤 Usuario:</label>
+    <input type="text" name="usuario" placeholder="Tu nombre o iniciales" required>
+
+    <label>📎 Selecciona un archivo PDF:</label>
+    <input type="file" name="pdf" accept=".pdf" required>
+
+    <button type="submit">Procesar y descargar ZIP</button>
+  </form>
+
+  <p><a href="/registros">📊 Ver registros</a> | <a href="/logout">🚪 Cerrar sesión</a></p>
+
+  {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+      <ul>
+        {% for category, message in messages %}
+          <li class="msg">{{ message }}</li>
+        {% endfor %}
+      </ul>
+    {% endif %}
+  {% endwith %}
+</body>
+</html>
