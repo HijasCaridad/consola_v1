@@ -1,0 +1,1 @@
+web: gunicorn mi_app_pdf.app:app
